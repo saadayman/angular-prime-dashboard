@@ -1,1 +1,44 @@
-/* You can add global styles to this file, and also import other style files */
+@use "tailwindcss";
+@use '../public/layout/layout.scss';
+@use "primeicons/primeicons.css";
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700&display=swap');
+
+
+body,
+html {
+  font-family: 'Poppins', sans-serif;
+  background-color: var(--primary-soft-color,#252836);
+  font-size:14px;
+}
+
+.p-fileupload-choose-button{
+  color:var(--text-primary) !important;
+  border:none !important;
+  box-shadow: 0px 1px 1px 0px #02001799;
+  padding:0.7rem 1rem !important;
+&:hover{
+  background-color:var(--primary-bg-color) !important;
+}
+}
+.asterisk {
+  &::after {
+    content: '*';
+    color: var(--color-danger);
+    margin-left:5px;
+  }
+}
+
+// Themeing based on Design
+input,p-select,p-inputtext,p-inputmask {
+  background-color: var(--primary-bg-color,#10141a) !important;
+  color:var(--text-primary,#cecbde) !important;
+  border-radius:0.7rem !important;
+  outline:none !important;
+  width: 100% !important;
+}
+label {
+  color:var(--text-secondary,#9e9bad) !important;
+  font-size:1rem !important;
+}
+
+

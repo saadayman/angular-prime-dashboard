@@ -1,0 +1,37 @@
+<p-toast />
+
+<header class="w-full mb-4">
+  <div
+    class="container-fluid flex flex-wrap gap-4 justify-between items-center border-b border-b-[var(--border-color)] py-7 px-3 mx-3"
+  >
+    <div class="flex justify-start items-center">
+      <p-button class="border-none text-white me-10" variant="text" appBackButton>
+        <ng-template pTemplate="icon">
+          <i class="pi pi-arrow-left text-white"></i>
+        </ng-template>
+      </p-button>
+      <div class="titles">
+        <p class="text-white font-bold">Add User</p>
+        <p class="text-gray-400">Organization</p>
+      </div>
+    </div>
+    <div class="flex justify-end items-center gap-2">
+      <p-button
+        label="Cancel"
+        icon="pi pi-times"
+        variant="text"
+        severity="secondary"
+        (click)="cancel()"
+      />
+      <p-button
+        label="Save"
+        icon="pi pi-check"
+        severity="success"
+        size="large"
+        [disabled]="userFormService.userForm.invalid"
+        (click)="saveUser()"
+      >
+      </p-button>
+    </div>
+  </div>
+</header>

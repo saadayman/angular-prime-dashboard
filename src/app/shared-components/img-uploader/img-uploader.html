@@ -1,0 +1,31 @@
+<div class="w-full flex flex-col justify-center items-center">
+  @if (files.length > 0) {
+    <div class="w-57 h-57 mb-4 mx-auto">
+      <img [src]="files[0]['objectURL']" alt="image" class="w-full h-full rounded-2xl" />
+    </div>
+  } @else {
+    <div class="w-57 h-57 mb-4 mx-auto bg-gray-500 rounded-2xl flex justify-center items-center">
+      <span class="text-gray-400 font-bold text-lg">User Image</span>
+    </div>
+  }
+
+  <div class="relative">
+    <input
+      type="file"
+      accept="image/*"
+      (change)="onFileSelected($event)"
+      class="absolute inset-0 w-full h-full opacity-0 cursor-pointer z-10"
+      #fileInput
+    />
+    <p-button
+      type="button"
+      (click)="fileInput.click()"
+      severity="secondary"
+      size="large"
+      [raised]="true"
+    >
+      <i class="pi pi-camera"></i>
+      Update Image
+    </p-button>
+  </div>
+</div>

@@ -1,0 +1,4 @@
+nohup: ignoring input
+Connected to MongoDB database: task
+Node Express server listening on http://localhost:4000
+MongoDB connected to: mongodb+srv://sayman:sayman@cluster0.rl0sfdh.mongodb.net/?retryWrites=true&w=majority&appName=Cluster0/task

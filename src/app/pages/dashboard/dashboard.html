@@ -1,0 +1,26 @@
+<div class="container-fluid w-full px-7 py-7 h-full">
+  <div class="grid grid-cols-1">
+    <app-statistics-cards />
+  </div>
+  <div class="grid grid-cols-12 mt-9">
+    <app-search class="col-span-12 sm:col-span-6 md:col-span-8 lg:col-span-10" />
+    <app-importandexport class="col-span-2 md:col-span-2" />
+  </div>
+  <div class="grid grid-cols-1 mt-14">
+    <app-table
+      [isImage]="true"
+      [tableCaptionIcon]="'time.svg'"
+      [tableCaption]="'Afternoon Shift'"
+    />
+  </div>
+  <div class="divider my-17">
+    <p-divider type="dashed" />
+  </div>
+  <div class="grid grid-cols-1">
+    <app-table
+      [isImage]="true"
+      [tableCaptionIcon]="'time.svg'"
+      [tableCaption]="'Afternoon Shift'"
+    />
+  </div>
+</div>

@@ -1,0 +1,144 @@
+
+<div class="w-full" [formGroup]="userFormService.userForm">
+  <div class="grid grid-cols-1 md:grid-cols-3 gap-4 mb-4">
+
+      <div class="flex flex-col gap-2">
+        <label for="first_name" class="asterisk">First Name</label>
+        <input
+          pInputText
+          pSize="large"
+          id="first_name"
+          aria-describedby="first_name"
+          formControlName="first_name"
+          [invalid]="userFormService.userForm.get('first_name')?.invalid && (userFormService.userForm.get('first_name')?.touched )"
+          required
+        />
+            @if (userFormService.userForm.get('first_name')?.invalid && (userFormService.userForm.get('first_name')?.touched )) {
+              <p-message severity="error" size="small" variant="simple">First Name is required.</p-message>
+          }
+        </div>
+      <div class="flex flex-col gap-2">
+        <label for="middle_name">Middle Name</label>
+        <input
+          pInputText
+          pSize="large"
+          id="middle_name"
+          aria-describedby="middle_name"
+          formControlName="middle_name"
+        />
+      </div>
+      <div class="flex flex-col gap-2">
+        <label for="last_name" class="asterisk">Last Name</label>
+        <input pInputText pSize="large" id="last_name" aria-describedby="last_name" formControlName="last_name" [invalid]="userFormService.userForm.get('last_name')?.invalid && (userFormService.userForm.get('last_name')?.touched )" required />
+               @if (userFormService.userForm.get('last_name')?.invalid && (userFormService.userForm.get('last_name')?.touched )) {
+              <p-message severity="error" size="small" variant="simple">First Name is required.</p-message>
+          }
+      </div>
+    </div>
+
+    <div class="grid grid-cols-1 mb-4">
+      <div class="flex flex-col gap-2 w-full">
+        <label for="email" class="asterisk">Email</label>
+        <p-iconfield>
+          <p-inputicon >
+            <img src="/email.svg" alt="email" />
+          </p-inputicon>
+          <input
+            pSize="large"
+            pInputText
+            id="email"
+            aria-describedby="email"
+            formControlName="email"
+            class="w-full"
+            [invalid]="userFormService.userForm.get('email')?.invalid && (userFormService.userForm.get('email')?.touched )"
+            required
+          />
+        </p-iconfield>
+        @if (userFormService.userForm.get('email')?.invalid && (userFormService.userForm.get('email')?.touched )) {
+        <p-message severity="error" size="small" variant="simple">{{userFormService.userForm.get('email')?.errors?.['required'] ? 'Email is required.' : 'Email is invalid.'}}</p-message>
+        }
+      </div>
+    </div>
+    <div class="grid grid-cols-1 mb-4">
+      <div class="flex flex-col gap-2 w-full">
+        <label for="Phone">Phone</label>
+        <p-iconfield class="w-full!">
+          <p-inputicon>
+            <img src="/phone.svg" alt="phone" />
+          </p-inputicon>
+          <p-inputmask
+            class="w-full!"
+            size="large"
+            mask="+999 99 999 9999"
+            id="phone"
+            aria-describedby="phone"
+            formControlName="phone"
+            placeholder="+962 7971 10803"
+        /></p-iconfield>
+      </div>
+    </div>
+    <div class="grid grid-cols-1 my-6">
+      <div class="flex flex-col gap-2 w-full">
+        <div class="flex items-center gap-2">
+          <label>RFID</label>
+          <p-toggleswitch formControlName="active_rfid" />
+        </div>
+      </div>
+    </div>
+    <div class="grid grid-cols-1 mb-4">
+      <input
+        pInputText
+        pSize="large"
+        id="rfid_number"
+        aria-describedby="rfid_number"
+        formControlName="rfid_number"
+
+      />
+    </div>
+    <div class="grid grid-cols-1 mb-4">
+      <label for="role" class="asterisk mb-2">Role</label>
+      <p-select
+        id="role"
+        aria-describedby="role"
+        formControlName="role"
+        [options]="userFormService.roles"
+        [invalid]="userFormService.userForm.get('role')?.invalid && (userFormService.userForm.get('role')?.touched )"
+        required
+        size="large"
+      />
+      @if (userFormService.userForm.get('role')?.invalid && (userFormService.userForm.get('role')?.touched )) {
+        <p-message severity="error" size="small" variant="simple">Role is required.</p-message>
+      }
+    </div>
+    <div class="grid grid-cols-1 mb-4">
+      <label for="role" class="asterisk mb-2">Department</label>
+      <p-select
+        id="department"
+        aria-describedby="department"
+        formControlName="department"
+        [options]="userFormService.departments"
+        [invalid]="userFormService.userForm.get('department')?.invalid && (userFormService.userForm.get('department')?.touched )"
+        required
+        size="large"
+      />
+      @if (userFormService.userForm.get('department')?.invalid && (userFormService.userForm.get('department')?.touched )) {
+        <p-message severity="error" size="small" variant="simple">Department is required.</p-message>
+      }
+    </div>
+
+    <div class="grid grid-cols-1 mb-4">
+      <label for="role" class="asterisk mb-2">Fleet</label>
+      <p-select
+        id="fleet"
+        aria-describedby="fleet"
+        formControlName="fleet"
+        [options]="userFormService.fleets"
+        size="large"
+        [invalid]="userFormService.userForm.get('fleet')?.invalid && (userFormService.userForm.get('fleet')?.touched )"
+        required
+      />
+      @if (userFormService.userForm.get('fleet')?.invalid && (userFormService.userForm.get('fleet')?.touched )) {
+        <p-message severity="error" size="small" variant="simple">Fleet is required.</p-message>
+      }
+    </div>
+</div>

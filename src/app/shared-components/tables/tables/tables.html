@@ -1,0 +1,116 @@
+<div class="card">
+  <p-table
+    [value]="data"
+    [scrollable]="scrollable"
+    [scrollHeight]="scrollHeight"
+    [resizableColumns]="resizableColumns"
+    [reorderableColumns]="reorderableColumns"
+    [columns]="columns"
+    [loading]="loading"
+    [paginator]="paginator"
+    [rows]="rows"
+  >
+    <ng-template #caption>
+      <div class="flex items-center justify-start gap-4 mb-3">
+        <div class="icon">
+          @if (isImage) {
+            <img src="{{ tableCaptionIcon }}" alt="icon" class="w-6 h-6" />
+          } @else {
+            <i [class]="tableCaptionIcon"></i>
+          }
+        </div>
+        <div class="flex flex-col">
+          <span class="text-xl font-bold text-[var(--text-primary)]">{{ tableCaption }}</span>
+          <span class="text-sm text-[var(--text-primary)]">
+            {{ tableCaptionDescription }}
+          </span>
+        </div>
+      </div>
+    </ng-template>
+    <ng-template #header>
+      <tr>
+        @for (col of columns; track col.field) {
+          <th
+            [pSortableColumn]="col.sortable ? col.field : undefined"
+            pResizableColumn
+            pReorderableColumn
+            [style.min-width]="col.width ?? '100px'"
+            [class]="col.styleClass"
+          >
+            <span class="flex items-center">
+              @if (reorderableColumns) {
+                <img src="./grap-icon.svg" alt="reorder" class="w-4 h-4" />
+              }
+              @if (col.header) {
+                <span class="mx-2">
+                  {{ col.header }}
+                </span>
+              }
+
+              @if (col.sortable) {
+                <p-sortIcon [field]="col.field" />
+              }
+            </span>
+          </th>
+        }
+      </tr>
+    </ng-template>
+
+    <!-- Dynamic Body -->
+    <ng-template #body let-row let-columns="columns" let-index="rowIndex">
+      <tr>
+        @for (col of columns; track col.field) {
+          <td [class]="col.styleClass">
+            @switch (col.type) {
+              @case ('badge') {
+                <p-button
+                  [label]="getValue(row, col.field + '.type')"
+                  variant="outlined"
+                  size="small"
+                  severity="secondary"
+                />
+
+                <span class="ml-2 underline">{{ getValue(row, col.field + '.id') }}</span>
+              }
+              @case ('icon') {
+                <div>
+                  <span>
+                    @if (col.isImage) {
+                      <img
+                        src="{{ getValue(row, col.field + '.icon') }}"
+                        alt="icon"
+                        class="w-7 h-8 inline-block"
+                      />
+                    } @else {
+                      <i
+                        [class]="getValue(row, col.field + '.icon')"
+                        class="text-green-500 mr-2"
+                      ></i>
+                    }
+                    {{ getValue(row, col.field + '.name') }}</span
+                  >
+                  <br />
+                  <span class="text-center block tracking-wide">{{
+                    getValue(row, col.field + '.id')
+                  }}</span>
+                </div>
+              }
+              @case ('select') {
+                <p-button
+                  [label]="getValue(row, col.field)"
+                  variant="outlined"
+                  severity="secondary"
+                  icon="pi pi-chevron-down"
+                  iconPos="right"
+                />
+              }
+              @default {
+                {{ getValue(row, col.field) }}
+              }
+            }
+          </td>
+        }
+      </tr>
+    </ng-template>
+  </p-table>
+</div>

@@ -1,0 +1,28 @@
+<div class="flex items-center ml-4">
+  <div class="relative">
+    <input
+      type="file"
+      accept="image/*"
+      class="absolute inset-0 w-full h-full opacity-0 cursor-pointer z-10"
+      #fileInput
+    />
+    <p-button
+      class="mr-2"
+      size="large"
+      (onClick)="fileInput.click()"
+      label="Import"
+      icon="pi pi-upload"
+      severity="secondary"
+      [raised]="true"
+    />
+  </div>
+
+  <p-button
+    size="large"
+    label="Export"
+    icon="pi pi-upload"
+    severity="secondary"
+    (onClick)="exportCSV()"
+    [raised]="true"
+  />
+</div>

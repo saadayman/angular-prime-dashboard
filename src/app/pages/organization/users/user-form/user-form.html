@@ -1,0 +1,13 @@
+<div class="w-full">
+  <app-user-page-header />
+  <div class="flex justify-center items-center w-full mt-10">
+    <form [formGroup]="this.userFormService.userForm" class="w-full md:max-w-3xl">
+      <div class="grid grid-cols-1 mb-18">
+        <div class="flex flex-col align-center justify-center gap-2 mx-auto">
+          <file-upload formControlName="user_image" />
+        </div>
+      </div>
+      <app-form-inputs />
+    </form>
+  </div>
+</div>

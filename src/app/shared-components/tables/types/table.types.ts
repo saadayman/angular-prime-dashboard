@@ -1,4 +1,4 @@
-export type ColumnConfig  = {
+export type ColumnConfig = {
   field: string;
   header: string;
   sortable?: boolean;
@@ -8,4 +8,5 @@ export type ColumnConfig  = {
   styleClass?: string;
   isImage?: boolean;
   dataType?: 'string' | 'number' | 'date' | 'boolean';
-}
+  sortableField?: string;
+};

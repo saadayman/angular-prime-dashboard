@@ -31,7 +31,7 @@
       <tr>
         @for (col of columns; track col.field) {
           <th
-            [pSortableColumn]="col.sortable ? col.field : undefined"
+            [pSortableColumn]="col.sortable ? (col.sortableField ?? col.field) : undefined"
             pResizableColumn
             pReorderableColumn
             [style.min-width]="col.width ?? '100px'"
@@ -48,7 +48,7 @@
               }
 
               @if (col.sortable) {
-                <p-sortIcon [field]="col.field" />
+                <p-sortIcon [field]="col.sortableField ?? col.field" />
               }
             </span>
           </th>

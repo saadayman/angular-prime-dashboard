@@ -30,13 +30,21 @@ export class AppTable implements OnInit {
 
   defaultColumns: ColumnConfig[] = [
     { field: 'id', header: 'Id', sortable: true, width: '100px', type: 'text' },
-    { field: 'vehicle', header: 'Vehicle', sortable: true, width: '270px', type: 'badge' },
+    {
+      field: 'vehicle',
+      header: 'Vehicle',
+      sortable: true,
+      sortableField: 'vehicle.id',
+      width: '270px',
+      type: 'badge',
+    },
     { field: 'plateNum', header: 'Plate Num.', sortable: false, width: '126px', type: 'text' },
     { field: 'odometer', header: 'Odometer', sortable: false, width: '126px', type: 'text' },
     { field: 'gps', header: 'GPS', sortable: false, width: '180px', type: 'text' },
     {
       field: 'device',
       header: 'Device',
+      sortableField: 'device.name',
       sortable: true,
       width: '126px',
       type: 'icon',
